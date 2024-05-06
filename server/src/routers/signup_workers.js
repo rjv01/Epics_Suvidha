@@ -25,18 +25,29 @@ router.get("/workers", async (req, res) => {
 router.use(limiter);
 
 router.post("/workers", async (req, res) => {
-	// console.log("Hey");
-	// console.log(req.body);
-	const worker = new Worker(req.body);
+
+
+	console.log(req.body);
+	const worker = new Worker({
+		name : req.body.name,
+		contact : req.body.contact,
+		email : req.body.email,
+		type_of_work:req.body.type_of_work,
+		cost_of_work : req.body.cost,
+		experience:req.body.experience,
+		location:req.body.location,
+		address:req.body.address,
+		password:req.body.password
+
+	});
 
 	try {
 		if (req.body.password !== req.body.confirm_password) {
 			return res.status(400).send("Password does not match");
 		}
-		await worker.save();
 
+		await worker.save();
 		const token = await worker.generateAuthToken();
-		//res.json(worker)
 		res.status(201).send({ worker, token });
 	} catch (e) {
 		// console.log(e.message);

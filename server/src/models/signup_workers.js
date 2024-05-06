@@ -57,7 +57,7 @@ const WorkerSchema = Schema({
 			if (value < 0) {
 				throw new Error("Cost must be a postive number");
 			}
-		},
+		},	
 	},
 	experience: {
 		type: Number,

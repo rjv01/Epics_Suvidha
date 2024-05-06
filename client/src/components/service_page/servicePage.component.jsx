@@ -17,6 +17,7 @@ import Frame from '../../assests/Frame.png';
 import profile_star from '../../assests/profile_star.png';
 import axios from 'axios';
 
+
 const Stars = ({ n }) => {
   let stars = [];
   for (let i = 1; i <= n; ++i) {
@@ -48,6 +49,10 @@ const WorkProfile = ({ name, experience, type, bookings, charge, rating,location
       isModalOpen1: !isModalOpen1,
     });
   };
+
+  var uid = JSON.parse(localStorage.getItem("userData"));
+  uid = uid.userId
+
 
   return (
     <div>
@@ -154,6 +159,7 @@ const WorkProfile = ({ name, experience, type, bookings, charge, rating,location
                     <input type='text' value={experience} name='experience' />
                     <input type='text' value={bookings} name='bookings' />
                     <input type='text' value={'+916423846823'} name='contact' />
+                    <input type='text' value={uid} name='id' />
                   </div>
                   <button type='submit'>Confirm Booking</button>
                 </form>

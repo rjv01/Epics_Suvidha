@@ -36,6 +36,8 @@ import MainCarousel from "./components/set_preferences/MainCarousel";
 import SetPreferences from "./components/set_preferences/SetPreferences";*/
 
 function App() {
+
+	
 	return (
 		<UserProvider>
 			<Router>
@@ -43,7 +45,9 @@ function App() {
 				{/* Our best services carousel (Kunal Prakash) */}
 				<Switch>
 					<Route exact path="/" component={Home} />
-					<Route path="/best_services" component={ServicePage} />
+					{localStorage.getItem("userData") !== null ? (
+						<Route path="/best_services" component={ServicePage} />
+					) : null}
 					<Route path="/signup_worker" component={SignUpForWorker} />
 					<Route path="/signup_customer" component={SignUpForCustomer} />
 					<Route path="/profile_customer" component={CustomerProfile} />
@@ -53,11 +57,11 @@ function App() {
 					<Redirect to="/" />
 				</Switch>
 				{/*Book Service Modal (Digvijay Srivastava), now integrated in services page*/}
-
 				<Footer />
 			</Router>
 		</UserProvider>
 	);
+	
 }
 
 export default App;

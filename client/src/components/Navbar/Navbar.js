@@ -24,9 +24,11 @@ function Navbar() {
 				<ReactBootStrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<ReactBootStrap.Navbar.Collapse id="basic-navbar-nav">
 					<ReactBootStrap.Nav className="ml-auto">
-						<NavLink to="best_services" className="nav-option nav-link active">
-							Best Services
-						</NavLink>
+					{(localStorage.getItem("userData") !== null) && (
+                            <NavLink to="best_services" className="nav-option nav-link active">
+                                Best Services
+                            </NavLink>
+                        )}
 						<NavLink to="/about_us" className="nav-option nav-link">
 							About Us
 						</NavLink>
